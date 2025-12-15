@@ -37,19 +37,19 @@ Module.register("MMM-KeyPress", {
 
     sendSwipeNotification: function(direction) {
         var payload = {
-            step: (direction === "ArrowRight" ? 3 : -3)  // 1 to move forward, -1 to move backward
+            step: (direction === "ArrowRight" ? 1 : -1)  // 1 to move forward, -1 to move backward
         };
 //        this.sendNotification('CX3_GLANCE_CALENDAR', payload);
         this.sendNotification("CX3_GET_CONFIG", {
           callback: (before) => {
             //Ensure 'before' contains a 'weekIndex'
-            if(!before||typeof before.weekIndex !== "number") {
+            if(!before||typeof before.monthIndex !== "number") {
               console.error("KeyPress: Failed to retreive valid config.");
               return;
             }
-            console.log(before.mode, before.weekIndex)
+            console.log(before.mode, before.monthIndex)
             this.sendNotification("CX3_SET_CONFIG", {
-              weekIndex: before.weekIndex + payload.step,
+              weekIndex: before.monthIndex + payload.step,
               callback: (after) => {
                 setTimeout(() => {
                   this.sendNotification("CX3_RESET", {
