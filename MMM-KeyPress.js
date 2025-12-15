@@ -43,7 +43,7 @@ Module.register("MMM-KeyPress", {
         this.sendNotification("CX3_GET_CONFIG", {
           callback: (before) => {
             //Ensure 'before' contains a 'weekIndex'
-            if(!before||typeof before.weekIndex !== "number")){
+            if(!before||typeof before.weekIndex !== "number") {
               console.error("KeyPress: Failed to retreive valid config.");
               return;
             }
