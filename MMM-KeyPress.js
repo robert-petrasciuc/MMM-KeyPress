@@ -50,6 +50,7 @@ Module.register("MMM-KeyPress", {
             console.log(before.mode, before.monthIndex)
             this.sendNotification("CX3_SET_CONFIG", {
               monthIndex: before.monthIndex + payload.step,
+/*
               callback: (after) => {
                 setTimeout(() => {
                   this.sendNotification("CX3_RESET", {
@@ -61,6 +62,7 @@ Module.register("MMM-KeyPress", {
                   });
                 }, 10000)
               }
+*/
            });
          }
        })
